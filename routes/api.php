@@ -20,6 +20,7 @@ use App\Http\Controllers\RewardController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\RajaOngkirController;
+use App\Models\Order;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -102,7 +103,7 @@ Route::prefix('retur')->group(function () {
     Route::post('/update', [ReturController::class, 'update']);
     Route::post('/delete', [ReturController::class, 'delete']);
     
-    Route::get('/show', [ReturController::class, 'show ']);
+    Route::get('/show', [ReturController::class, 'show']);
     Route::get('/by-orders', [ReturController::class, 'listByOrders']);
 });
 
@@ -165,10 +166,12 @@ Route::prefix('detailorder')->group(function(){
 });
 
 Route::prefix('reward')->group(function () {
-    Route::get('/', [DetailOrderController::class,'list_reward'])->name('detailorder');
+    Route::get('/', [DetailOrderController::class,'list_reward'])->name('detailreward');
     Route::post('/add', [RewardController::class, 'create'])->name('tambahreward');
     Route::post('/update', [RewardController::class, 'update'])->name('updatereward');
     Route::post('/delete', [RewardController::class, 'delete'])->name('deletereward');
+    Route::get('/check-today', [RewardController::class, 'checkToday']);
+    Route::get('/latest', [RewardController::class, 'latest']);
 });
 
 Route::post('/forgot-password', [App\Http\Controllers\ForgotPasswordController::class, 'sendResetLink']);
@@ -178,8 +181,12 @@ Route::post('/password/reset', [ForgotPasswordController::class, 'reset']);
 Route::get('/rajaongkir/provinces', [RajaOngkirController::class,'provinces']);
 Route::get('/rajaongkir/cities/{provinceId}', [RajaOngkirController::class, 'cities']);
 Route::get('/rajaongkir/cost', [RajaOngkirController::class,'cost']);
+Route::get('/rajaongkir/ongkir', [RajaOngkirController::class, 'getOngkirByPelanggan']);
 
-use App\Models\Order;
+
 Route::get('/debug-orders', function () {
     return \App\Models\Order::with('pelanggan')->get();
 });
+
+
+

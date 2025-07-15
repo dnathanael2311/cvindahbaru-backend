@@ -19,13 +19,12 @@ class PelangganController extends Controller
     public function show($id)
     {
         $pelanggan = Pelanggan::find($id);
-
         if (!$pelanggan) {
             return response()->json(['message' => 'Pelanggan tidak ditemukan'], 404);
         }
-
         return response()->json($pelanggan);
     }
+
 
     // ✅ Tambah pelanggan baru + keranjang
     public function create(Request $request)

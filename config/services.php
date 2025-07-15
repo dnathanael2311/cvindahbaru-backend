@@ -39,19 +39,19 @@ return [
         'base_url' => env('RAJAONGKIR_BASE_URL'),
     ],
     'shipping' => [
-    'key' => env('SHIPPING_KEY'),
-    'base_url' => 'https://api-sandbox.collaborator.komerce.id/tariff/api/v1'
-],
-'midtrans' => [
-    'server_key' => env('MIDTRANS_SERVER_KEY'),
-    'client_key' => env('MIDTRANS_CLIENT_KEY'),
-    'is_production' => env('MIDTRANS_IS_PRODUCTION', false),
-],
-'mailjet' => [
-    'key'    => env('MAILJET_API_KEY'),
-    'secret' => env('MAILJET_SECRET_KEY'),
-    'email'  => env('MAIL_FROM_ADDRESS'),
-    'name'   => env('MAIL_FROM_NAME', 'Admin'),
-],
+        'key' => env('SHIPPING_KEY'),
+        'base_url' => 'https://api-sandbox.collaborator.komerce.id/tariff/api/v1'
+    ],
+    'midtrans' => [
+        'server_key' => env('MIDTRANS_SERVER_KEY'),
+        'client_key' => env('MIDTRANS_CLIENT_KEY'),
+        'is_production' => env('MIDTRANS_IS_PRODUCTION', false),
+    ],
+    'mailjet' => [
+        'key'    => env('MAILJET_API_KEY'),
+        'secret' => env('MAILJET_SECRET_KEY'),
+        'email'  => env('MAIL_FROM_ADDRESS'),
+        'name'   => env('MAIL_FROM_NAME', 'Admin'),
+    ],
 
 ];

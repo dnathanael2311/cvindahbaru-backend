@@ -23,7 +23,7 @@ class Checkout extends Model
         'kurir'
     ];
 
-    public function pelanggan(): BelongsTo
+    public function pelanggan()
     {
         return $this->belongsTo(Pelanggan::class, 'id_plg', 'id_plg');
     }

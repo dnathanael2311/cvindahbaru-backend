@@ -12,6 +12,7 @@ class Reward extends Model
 
     protected $table = "reward";
     protected $primaryKey = "id_reward";
+    public $timestamps = true; // ✅ pastikan ini aktif jika pakai created_at & updated_at
 
     protected $fillable = [
         'id_plg',
