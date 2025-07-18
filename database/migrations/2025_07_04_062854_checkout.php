@@ -17,6 +17,7 @@ return new class extends Migration
             $table->decimal('ttl_harga', 10, 2);
             $table->dateTime('tgl_checkout');
             $table->string('kurir', 50);
+            $table->string('st_pembayaran', 20);
             $table->timestamps();
             $table->foreign('id_krg')->references('id_krg')->on('keranjang');
             $table->foreign('id_plg')->references('id_plg')->on('pelanggan');

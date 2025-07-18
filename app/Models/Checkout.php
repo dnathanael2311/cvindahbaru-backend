@@ -20,7 +20,8 @@ class Checkout extends Model
         'ongkir',
         'ttl_harga',
         'tgl_checkout',
-        'kurir'
+        'kurir',
+        'st_pembayaran'
     ];
 
     public function pelanggan()

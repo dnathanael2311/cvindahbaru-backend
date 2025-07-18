@@ -14,7 +14,12 @@
         // Menampilkan semua checkout beserta relasi pelanggan, keranjang, dan reward
         public function list_checkout(Request $request)
         {
-            $data = Checkout::with(['pelanggan', 'keranjang', 'reward'])->get();
+            $id_plg = $request->id_plg;
+
+            $data = Checkout::where('id_plg', $id_plg)
+                            ->orderBy('tgl_checkout', 'desc')
+                            ->get();
+
             return response()->json($data);
         }
 
@@ -22,7 +27,7 @@
         public function create(Request $request)
         {
             $ongkir = $request->ongkir;
-            $ttl_harga = $request->ttl_harga;
+            $ttl_harga = $request->ttl_harga;   
 
             // Cek apakah pelanggan memiliki reward aktif
             $reward = Reward::where('id_plg', $request->id_plg)
@@ -49,7 +54,8 @@
                 'ongkir'      => $ongkir,
                 'ttl_harga'   => $ttl_harga,
                 'tgl_checkout'=> $request->tgl_checkout,
-                'kurir'       => $request->kurir
+                'kurir'       => $request->kurir,
+                'st_pembayaran'       => $request->st_pembayaran
             ]);
 
             return $checkout
@@ -77,7 +83,8 @@
                 'ongkir'       => $request->ongkir,
                 'ttl_harga'    => $request->ttl_harga,
                 'tgl_checkout' => $request->tgl_checkout,
-                'kurir'        => $request->kurir
+                'kurir'        => $request->kurir,
+                'st_pembayaran'        => $request->st_pembayaran
             ]);
 
             return response()->json(['message' => 'Update berhasil']);
